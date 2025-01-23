@@ -6,7 +6,7 @@
 /*   By: jealefev <jealefev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 16:53:19 by jealefev          #+#    #+#             */
-/*   Updated: 2025/01/23 15:39:28 by jealefev         ###   ########.fr       */
+/*   Updated: 2025/01/23 18:51:02 by jealefev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	*supervisor(void *data)
 			pthread_mutex_unlock(global_state->death_flag_mutex);
 			break ;
 		}
-		if (ft_usleep(100, global_state) == 1)
+		if (ft_usleep(1, global_state) == 1)
 		{
 			break ;
 		}

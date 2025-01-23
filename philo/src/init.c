@@ -6,7 +6,7 @@
 /*   By: jealefev <jealefev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 15:56:10 by jealefev          #+#    #+#             */
-/*   Updated: 2025/01/23 15:38:12 by jealefev         ###   ########.fr       */
+/*   Updated: 2025/01/23 18:01:38 by jealefev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ int	give_forks(int i, t_global_state *global_state)
 	{
 		global_state->philos[0].l_fork = &global_state->forks[0];
 		global_state->philos[0].r_fork
-			= &global_state->forks[global_state->philo_nbr - 1];
+			= &global_state->forks[global_state->philo_nbr
+			- 1];
 	}
 	else
 	{
@@ -51,9 +52,9 @@ int	init_philos(t_global_state *global_state)
 	while (i < global_state->philo_nbr)
 	{
 		global_state->philos[i].eat_count = 0;
-		global_state->philos[i].id = i+1;
+		global_state->philos[i].id = i + 1;
 		global_state->philos[i].last_meal = 0;
-		global_state->philos[i].time_to_think = time_to_think(i, global_state);
+		global_state->philos[i].time_to_think = (global_state->time_to_die - global_state->time_to_sleep - global_state->time_to_eat) - 2 ;//time_to_think(i, global_state);
 		global_state->philos[i].meal_lock = global_state->meal_check_mutex;
 		global_state->philos[i].dead_lock = global_state->death_flag_mutex;
 		global_state->philos[i].printf_mutex = global_state->printf_mutex;

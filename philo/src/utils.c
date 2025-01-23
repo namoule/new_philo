@@ -6,7 +6,7 @@
 /*   By: jealefev <jealefev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 15:59:01 by jealefev          #+#    #+#             */
-/*   Updated: 2025/01/23 12:01:33 by jealefev         ###   ########.fr       */
+/*   Updated: 2025/01/23 18:59:11 by jealefev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,9 @@ int	ft_strcmp(char *s1, char *s2)
 void	safe_printf(char *str, t_philo *philo)
 {
 	long	time;
-
+	
+	if(safe_check_death(philo->global_state) == true)
+		return ;
 	pthread_mutex_lock(philo->global_state->printf_mutex);
 	pthread_mutex_lock(philo->global_state->start_time_mutex);
 	time = get_time() - philo->global_state->start_time;
@@ -58,11 +60,6 @@ void	safe_printf(char *str, t_philo *philo)
 		pthread_mutex_lock(philo->global_state->printf_mutex);
 	}
 	pthread_mutex_lock(philo->global_state->death_flag_mutex);
-	if (ft_strcmp("died", str) == 0 && philo->global_state->dead == 0)
-	{
-		printf("%ld %d %s\n", time, philo->id, str);
-		philo->global_state->dead = 1;
-	}
 	if (!philo->global_state->dead)
 		printf("%ld %d %s\n", time, philo->id, str);
 	pthread_mutex_unlock(philo->global_state->death_flag_mutex);

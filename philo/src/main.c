@@ -6,13 +6,13 @@
 /*   By: jealefev <jealefev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 13:10:25 by jealefev          #+#    #+#             */
-/*   Updated: 2025/01/23 14:47:39 by jealefev         ###   ########.fr       */
+/*   Updated: 2025/01/23 16:11:17 by jealefev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../philo.h"
 
-void free_global_state(t_global_state *global_state)
+void	free_global_state(t_global_state *global_state)
 {
 	free(global_state->printf_mutex);
 	free(global_state->death_flag_mutex);
@@ -37,7 +37,7 @@ int	main(int argc, char **argv)
 {
 	t_global_state	global_state;
 
-	if (argc != 5 && argc != 6)
+	if (argc != 5 && argc != 6)//checker le format des arguments, qu'on te mette pas des lettres ou des virgules dedans
 		return (0);
 	init(argc, argv, &global_state);
 	thread(&global_state);
